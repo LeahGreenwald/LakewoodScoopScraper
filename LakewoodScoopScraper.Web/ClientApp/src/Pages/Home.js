@@ -29,7 +29,7 @@ const Home = () => {
                         {posts && posts.map(p =>
                             <tr>
                                 <td>
-                                    <img src={p.imageUrl} />
+                                    <img src={p.imageUrl} style={{ width: 200 }}/>
                                 </td>
                                 <td>
                                     <a target="_blank" href={p.linkUrl}>
