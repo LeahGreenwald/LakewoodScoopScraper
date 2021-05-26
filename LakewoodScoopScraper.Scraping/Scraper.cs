@@ -22,7 +22,7 @@ namespace LakewoodScoopScraper.Scraping
             {
                 var lakewoodScoopResult = new LakewoodScoopResult();
 
-                var img = result.QuerySelector("img.aligncenter.size-large");
+                var img = result.QuerySelector("img");
                 if (img != null)
                 {
                     lakewoodScoopResult.ImageUrl = img.Attributes["src"].Value;
@@ -42,12 +42,17 @@ namespace LakewoodScoopScraper.Scraping
                 lakewoodScoopResult.LinkUrl = link.Attributes["href"].Value;
 
 
-                var blurb = result.QuerySelector("p");
-                if (blurb == null)
+                var blurbs = result.QuerySelectorAll("p");
+                foreach (var blurb in blurbs)
                 {
-                    continue;
+                    if (blurb == null)
+                    {
+                        continue;
+                    }
+
+                    lakewoodScoopResult.BlurbOfText += blurb.TextContent.Replace("Read more ›", String.Empty);
                 }
-                lakewoodScoopResult.BlurbOfText = blurb.TextContent.Replace("Read more ›", String.Empty);
+
                 results.Add(lakewoodScoopResult);
 
             }
