@@ -14,9 +14,7 @@ const Home = () => {
 
     return (
         <div className='container'>
-            <div className='row'>
-                <button className='btn btn-primary' >Refresh</button>
-            </div>
+            
             <div className='row'>
                 <table className='table table-hover table-bordered table-striped'>
                     <thead>
